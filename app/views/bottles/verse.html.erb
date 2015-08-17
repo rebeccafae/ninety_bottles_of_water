@@ -1,0 +1,30 @@
+<style>
+  img {
+    width: 100px
+  }
+  #sponge img {
+    width: 384px
+  }
+</style>
+
+<h2>
+  <% if @number_of_bottles > 0 %>
+    <%= pluralize(@number_of_bottles, 'bottle') %> of water on the wall<br/>
+    <%= pluralize(@number_of_bottles, 'bottle') %> of water...<br/>
+    <%= link_to 'Take one down...', take_path %>
+  <% else %>
+    No more bottles of water on the wall<br/>
+    No more bottles of water...<br/>
+    <%= link_to 'Go to the store...', store_path %><br/>
+    <div id="sponge">
+      <%= image_tag('spongebob-water.png') %>
+    </div>
+  <% end %>
+</h2>
+
+<% 1.upto(@number_of_bottles) do |number| %>
+  <%= image_tag('waterbottle.png') %>
+  <% if number % 10 == 0 %>
+    <br/>
+  <% end %>
+<% end %>
